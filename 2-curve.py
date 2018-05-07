@@ -11,9 +11,12 @@ import numpy as np
 
 def mean(tuples, xt, yt, zt):
     n = len(tuples)
-    sum = 0;
+    sum = 0.0;
     for i in range(0, n):
-        sum += tuples[i][0]**xt * tuples[i][1]**yt  * tuples[i][2]**zt
+        da = 1.0 * np.power(tuples[i][0] * 1.0,xt)
+        da *= np.power(tuples[i][1] * 1.0, yt)
+        da *= np.power(tuples[i][2] * 1.0 ,zt)
+        sum += da
     sum = sum * 1.0 / n
     print sum
     return sum
@@ -59,7 +62,7 @@ def testEqu(x, y):
     return (x, y, x * x + 2 * y * y - 3 * x * y + 4)
 
 # z = x^2 + 2y^2 - 3xy + x + 1
-tuples = [testEqu(1,2), testEqu(3,5), testEqu(9,3), testEqu(14,5), testEqu(27,6), testEqu(68,13), testEqu(13,21), testEqu(66, 63), testEqu(32,51)]
+tuples = [testEqu(1,2), testEqu(3,5), testEqu(9,3), testEqu(14,5), testEqu(27,6), testEqu(61,122), testEqu(1311,21), testEqu(66, 63), testEqu(32,51)]
 ans = solve(tuples)
 print ans
 t1 = testEqu(54,43)
